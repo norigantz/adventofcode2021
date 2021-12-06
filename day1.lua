@@ -1,4 +1,3 @@
-require "tools"
 day1 = {}
 
 function day1.solve(arr, width)
