@@ -1,8 +1,7 @@
 day1 = {}
 
 function day1.solve(arr, width)
-    local increases = 0
-    local curr_value = 0
+    local increases,curr_value = 0,0
     for a,b in pairs(arr) do
         if arr[a+width-1] == nil then break end
         local compare_to = tonumber(b)
@@ -10,7 +9,7 @@ function day1.solve(arr, width)
         if curr_value ~= 0 and curr_value < compare_to then increases = increases + 1 end
         curr_value = compare_to
     end
-    return increases
+    print(increases)
 end
 
 return day1

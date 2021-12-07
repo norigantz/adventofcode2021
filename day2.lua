@@ -1,8 +1,7 @@
 day2 = {}
 
 function day2.a(arr)
-    local horizontal = 0
-    local depth = 0
+    local horizontal,depth = 0,0
     for a,b in pairs(arr) do
         local instruction = string.match(b, "%a+")
         local value = tonumber(string.match(b, "%d+"))
@@ -10,13 +9,11 @@ function day2.a(arr)
         elseif instruction == "down" then depth = depth + value
         elseif instruction == "up" then depth = depth - value end
     end
-    return horizontal * depth
+    print(horizontal * depth)
 end
 
 function day2.b(arr)
-    local horizontal = 0
-    local depth = 0
-    local aim = 0
+    local horizontal,depth,aim = 0,0,0
     for a,b in pairs(arr) do
         local instruction = string.match(b, "%a+")
         local value = tonumber(string.match(b, "%d+"))
@@ -26,7 +23,7 @@ function day2.b(arr)
         elseif instruction == "down" then aim = aim + value
         elseif instruction == "up" then aim = aim - value end
     end
-    return horizontal * depth
+    print(horizontal * depth)
 end
 
 return day2

@@ -9,4 +9,11 @@ function tools.read(file_name)
     return output_arr
 end
 
+function tools.print_table(table)
+    print(table)
+    for a,b in pairs(table) do
+        print(a,b)
+    end
+end
+
 return tools
