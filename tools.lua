@@ -12,7 +12,11 @@ end
 function tools.print_table(table)
     print(table)
     for a,b in pairs(table) do
-        print(a,b)
+        if type(b) == "table" then
+            tools.print_table(b)
+        else
+            print(a,b)
+        end
     end
 end
 

@@ -1,5 +1,13 @@
 day1 = {}
 
+function day1.a(arr)
+    day1.solve(arr, 1)
+end
+
+function day1.b(arr)
+    day1.solve(arr, 3)
+end
+
 function day1.solve(arr, width)
     local increases,curr_value = 0,0
     for a,b in pairs(arr) do
