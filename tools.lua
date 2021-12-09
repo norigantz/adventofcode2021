@@ -20,4 +20,8 @@ function tools.print_table(table)
     end
 end
 
+function tools.idx(x, y, width)
+    return y*width + x
+end
+
 return tools
