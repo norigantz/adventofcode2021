@@ -25,45 +25,15 @@ function day9.b(arr)
             x, y = next[1], next[2]
             table.insert(visited, next)
             basins[a] = basins[a] + 1
-            if heightmap[x-1] ~= nil and tonumber(heightmap[x-1][y]) < 9 then
-                for va,vb in pairs(visited) do
-                    if x-1 == vb[1] and y == vb[2] then goto continue end
+            for i=-1,1 do
+                for j=-1,1 do
+                    if i ~= j and (i == 0 or j == 0) then
+                        if heightmap[x+i] ~= nil and heightmap[x+i][y+j] ~= nil and tonumber(heightmap[x+i][y+j]) < 9 and
+                           not tools.table_contains(visited, { x+i, y+j }) and not tools.table_contains(search, { x+i, y+j }) then
+                            table.insert(search, { x+i, y+j })
+                        end
+                    end
                 end
-                for sa,sb in pairs(search) do
-                    if x-1 == sb[1] and y == sb[2] then goto continue end
-                end
-                table.insert(search, { x-1, y })
-                ::continue::
-            end
-            if heightmap[x+1] ~= nil and tonumber(heightmap[x+1][y]) < 9 then
-                for va,vb in pairs(visited) do
-                    if x+1 == vb[1] and y == vb[2] then goto continue end
-                end
-                for sa,sb in pairs(search) do
-                    if x+1 == sb[1] and y == sb[2] then goto continue end
-                end
-                table.insert(search, { x+1, y })
-                ::continue::
-            end
-            if heightmap[x][y-1] ~= nil and tonumber(heightmap[x][y-1]) < 9 then
-                for va,vb in pairs(visited) do
-                    if x == vb[1] and y-1 == vb[2] then goto continue end
-                end
-                for sa,sb in pairs(search) do
-                    if x == sb[1] and y-1 == sb[2] then goto continue end
-                end
-                table.insert(search, { x, y-1 })
-                ::continue::
-            end
-            if heightmap[x][y+1] ~= nil and tonumber(heightmap[x][y+1]) < 9 then
-                for va,vb in pairs(visited) do
-                    if x == vb[1] and y+1 == vb[2] then goto continue end
-                end
-                for sa,sb in pairs(search) do
-                    if x == sb[1] and y+1 == sb[2] then goto continue end
-                end
-                table.insert(search, { x, y+1 })
-                ::continue::
             end
         until #search == 0
     end
