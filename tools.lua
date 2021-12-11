@@ -9,9 +9,9 @@ function tools.read(file_name)
     return output_arr
 end
 
-function tools.print_table(table)
-    print(table)
-    for a,b in pairs(table) do
+function tools.print_table(t)
+    print(t)
+    for a,b in pairs(t) do
         if type(b) == "table" then
             tools.print_table(b)
         else
@@ -20,15 +20,37 @@ function tools.print_table(table)
     end
 end
 
+function tools.print_grid(t) -- table[x][y]
+    for y=1,#t[1] do
+        local s = ""
+        for x=1,#t do
+            s = s..t[x][y]
+        end
+        print(s)
+    end
+end
+
+function tools.build_grid(t) -- builds table grid with indices [x][y]
+    local grid = {}
+    for i=1,#t[1] do
+        local row = {}
+        for j=1,#t do
+            table.insert(row, t[j]:sub(i,i))
+        end
+        table.insert(grid, row)
+    end
+    return grid
+end
+
 function tools.idx(x, y, width)
     return y*width + x
 end
 
-function tools.table_contains(table, item)
-    for i=1,#table do
-        if #item == #table[i] then
+function tools.table_contains(t, item)
+    for i=1,#t do
+        if #item == #t[i] then
             for j=1,#item do
-                if item[j] ~= table[i][j] then goto continue
+                if item[j] ~= t[i][j] then goto continue
                 elseif j == #item then return true end
             end
         end

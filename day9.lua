@@ -1,7 +1,7 @@
 day9 = {}
 
 function day9.a(arr)
-    local heightmap = day9.build_heightmap(arr)
+    local heightmap = tools.build_grid(arr)
     local low_points = day9.find_low_points(heightmap)
     local risk_level = 0
     for a,b in pairs(low_points) do
@@ -12,7 +12,7 @@ function day9.a(arr)
 end
 
 function day9.b(arr)
-    local heightmap = day9.build_heightmap(arr)
+    local heightmap = tools.build_grid(arr)
     local low_points = day9.find_low_points(heightmap)
     local basins = {} -- basins[b], key corresponds to its low_point, value is size
     for a,b in pairs(low_points) do
@@ -57,18 +57,6 @@ function day9.find_low_points(heightmap)
         end
     end
     return low_points
-end
-
-function day9.build_heightmap(arr)
-    local heightmap = {} -- heightmap[x][y]
-    for i=1,#arr[1] do
-        local row = {}
-        for j=1,#arr do
-            table.insert(row, arr[j]:sub(i,i))
-        end
-        table.insert(heightmap, row)
-    end
-    return heightmap
 end
 
 return day9
