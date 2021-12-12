@@ -49,9 +49,13 @@ end
 function tools.table_contains(t, item)
     for i=1,#t do
         if #item == #t[i] then
-            for j=1,#item do
-                if item[j] ~= t[i][j] then goto continue
-                elseif j == #item then return true end
+            if #item == 1 or type(item) == "string" then
+                if item == t[i] then return true end
+            else
+                for j=1,#item do
+                    if item[j] ~= t[i][j] then goto continue
+                    elseif j == #item then return true end
+                end
             end
         end
         ::continue::

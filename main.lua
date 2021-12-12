@@ -10,6 +10,7 @@ require "day8"
 require "day9"
 require "day10"
 require "day11"
+require "day12"
 
 -- Usage: lua main [day_number] [input_file]
 local arr = tools.read("in/"..arg[2])
@@ -35,4 +36,6 @@ elseif arg[1] == "10a" then day10.a(arr)
 elseif arg[1] == "10b" then day10.b(arr)
 elseif arg[1] == "11a" then day11.a(arr)
 elseif arg[1] == "11b" then day11.b(arr)
+elseif arg[1] == "12a" then day12.a(arr)
+elseif arg[1] == "12b" then day12.b(arr)
 end
