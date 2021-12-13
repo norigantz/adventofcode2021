@@ -24,7 +24,11 @@ function tools.print_grid(t) -- table[x][y]
     for y=1,#t[1] do
         local s = ""
         for x=1,#t do
-            s = s..t[x][y]
+            if t[x][y] == nil then
+                s = s..0
+            else
+                s = s..t[x][y]
+            end
         end
         print(s)
     end
