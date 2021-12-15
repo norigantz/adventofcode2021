@@ -14,16 +14,16 @@ function day12.b(edge_list)
     print(#paths)
 end
 
-function day12.find_paths(edges, paths, path, next, allow_revisit, small_revisited)
+function day12.find_paths(edges, paths, path, curr, allow_revisit, small_revisited)
     local curr_path = {}
     for a,b in pairs(path) do
         table.insert(curr_path, b)
     end
-    table.insert(curr_path, next)
-    if next == "end" then
+    table.insert(curr_path, curr)
+    if curr == "end" then
         table.insert(paths, curr_path)
     else
-        for a,b in pairs(edges[next]) do
+        for a,b in pairs(edges[curr]) do
             local can_revisit = false
             if allow_revisit and not small_revisited and b ~= "start" and b ~= "end" and string.match(b, "%u") == nil and tools.table_contains(curr_path, b) then can_revisit = true end
             if string.match(b, "%u") ~= nil or not tools.table_contains(curr_path, b) or can_revisit then
