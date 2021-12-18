@@ -24,11 +24,8 @@ function tools.print_grid(t) -- table[x][y]
     for y=1,#t[1] do
         local s = ""
         for x=1,#t do
-            if t[x][y] == nil then
-                s = s..0
-            else
-                s = s..t[x][y]
-            end
+            if t[x][y] == nil then s = s..'-'
+            else s = s..t[x][y] end
         end
         print(s)
     end
@@ -65,6 +62,28 @@ function tools.table_contains(t, item)
         ::continue::
     end
     return false
+end
+
+function tools.hex_to_bin(char)
+    local hex_table = {
+        ["0"]="0000",
+        ["1"]="0001",
+        ["2"]="0010",
+        ["3"]="0011",
+        ["4"]="0100",
+        ["5"]="0101",
+        ["6"]="0110",
+        ["7"]="0111",
+        ["8"]="1000",
+        ["9"]="1001",
+        ["A"]="1010",
+        ["B"]="1011",
+        ["C"]="1100",
+        ["D"]="1101",
+        ["E"]="1110",
+        ["F"]="1111"
+    }
+    return hex_table[char]
 end
 
 return tools
